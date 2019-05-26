@@ -34,17 +34,18 @@ def main():
 
     #4, 5. converge colors & resize image
     image = cv.imread("lena.jpg")
-    step = 70;
-    image = cc.color_convergence(image, step)
-    resize_ratio = 0.3; resize_width = 800; resize_height = 600
-    #image = ri.resize_image(image, resize_ratio, resize_ratio, mode = ri.RESIZE_BY_RATIO)
-    image = ri.resize_image(image, resize_width, resize_height, mode = ri.RESIZE_BY_SIZE)
-    #cv.imshow("color convergence", image)
+    if(image is not None):
+        step = 70;
+        image = cc.color_convergence(image, step)
+        resize_ratio = 0.3; resize_width = 800; resize_height = 600
+        #image = ri.resize_image(image, resize_ratio, resize_ratio, mode = ri.RESIZE_BY_RATIO)
+        image = ri.resize_image(image, resize_width, resize_height, mode = ri.RESIZE_BY_SIZE)
+        #cv.imshow("color convergence", image)
 
     #6. random convergence
     image = make_empty_image(width, height, channels)
 
-    divider = 100
+    divider = 50
     points = cp.create_points(width, height, divider, divider)
 
     subdiv = cv.Subdiv2D((0,0,image.shape[1], image.shape[0]));
